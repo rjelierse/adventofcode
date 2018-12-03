@@ -32,6 +32,10 @@ func (i *Iterator) TurnRight() {
 	i.Direction = i.Direction.TurnRight()
 }
 
+func (i *Iterator) Reverse() {
+	i.Direction = i.Direction.Reverse()
+}
+
 func (i *Iterator) MoveOne() {
 	i.Move(1)
 }
