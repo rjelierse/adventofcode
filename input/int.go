@@ -20,3 +20,12 @@ func ReadAsIntSlice(path string) []int {
 	return ints
 }
 
+// ReadAsInt returns the input data as an integer value
+func ReadAsInt(path string) int {
+	data := ReadAsIs(path)
+	value, err := strconv.Atoi(string(data))
+	if err != nil {
+		panic(err)
+	}
+	return value
+}
