@@ -8,3 +8,7 @@ func ReadAsStringSlice(path string) []string {
 	}
 	return strings
 }
+
+func ReadAsString(path string) string {
+	return string(ReadAsIs(path))
+}

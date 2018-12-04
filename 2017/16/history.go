@@ -14,14 +14,14 @@ func (h *History) Save(position string) {
 	h.positions = append(h.positions, position)
 }
 
-func (h *History) SeenBefore(position string) (bool, int) {
-	for index, p := range h.positions {
+func (h *History) SeenBefore(position string) bool {
+	for _, p := range h.positions {
 		if p == position {
-			return true, index
+			return true
 		}
 	}
 
-	return false, -1
+	return false
 }
 
 func (h *History) Get(index int) string {
