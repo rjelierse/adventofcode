@@ -8,13 +8,13 @@ import (
 )
 
 func part1(guards GuardMap) int {
-	guard := guards.MostSleep()
+	guard := guards.MostAsleep()
 	minute, _ := guard.MostSleptMinute()
 	return guard.ID * minute
 }
 
 func part2(guards GuardMap) int {
-	guard := guards.MostSleepAtSameTime()
+	guard := guards.MostSleptAtSameTime()
 	minute, _ := guard.MostSleptMinute()
 	return guard.ID * minute
 }

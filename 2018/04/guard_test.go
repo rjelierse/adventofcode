@@ -32,14 +32,14 @@ func TestGuard_MostSleptMinute(t *testing.T) {
 }
 
 func TestGuardMap_MostSleep(t *testing.T) {
-	g := guards.MostSleep()
+	g := guards.MostAsleep()
 	if g.ID != 10 {
 		t.Errorf("Expected guard 10 to have the most sleep, got guard %d instead", g.ID)
 	}
 }
 
 func TestGuardMap_MostSleepAtSameTime(t *testing.T) {
-	g := guards.MostSleepAtSameTime()
+	g := guards.MostSleptAtSameTime()
 	if g.ID != 99 {
 		t.Errorf("Expected guard 99 to have the most frequent sleep, got guard %d instead", g.ID)
 	}

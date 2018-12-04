@@ -69,8 +69,8 @@ func (m GuardMap) get(id int) *Guard {
 	return m[id]
 }
 
-// MostSleep returns the guard that catches the most sleep during its shift
-func (m GuardMap) MostSleep() (g *Guard) {
+// MostAsleep returns the guard that catches the most sleep during its shift
+func (m GuardMap) MostAsleep() (g *Guard) {
 	for _, v := range m {
 		if g == nil {
 			g = v
@@ -82,8 +82,8 @@ func (m GuardMap) MostSleep() (g *Guard) {
 	return
 }
 
-// MostSleepAtSameTime returns the guard that catches the most sleep at the same minute
-func (m GuardMap) MostSleepAtSameTime() (g *Guard) {
+// MostSleptAtSameTime returns the guard that catches the most sleep at the same minute
+func (m GuardMap) MostSleptAtSameTime() (g *Guard) {
 	var count int
 	for _, v := range m {
 		_, c := v.MostSleptMinute()
