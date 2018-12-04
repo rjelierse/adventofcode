@@ -9,7 +9,7 @@ import (
 
 func Command() subcommands.Command {
 	p := adventofcode.NewPuzzle("day01", func(path string) error {
-		changes := input.ReadAsInts(path)
+		changes := input.ReadAsIntSlice(path)
 		fmt.Println("Part 1:", part1(changes))
 		fmt.Println("Part 2:", part2(changes))
 		return nil
