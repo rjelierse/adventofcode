@@ -10,7 +10,7 @@ import (
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day03", func(path string) error {
 		var claims []*Claim
-		definitions := input.ReadAsStrings(path)
+		definitions := input.ReadAsStringSlice(path)
 		for _, definition := range definitions {
 			claims = append(claims, NewClaim(definition))
 		}

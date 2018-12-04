@@ -10,7 +10,7 @@ import (
 
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day08", func(path string) error {
-		instructions := input.ReadAsStrings(path)
+		instructions := input.ReadAsStringSlice(path)
 		screen := NewScreen(50, 6)
 		for _, instruction := range instructions {
 			fields := strings.Fields(instruction)

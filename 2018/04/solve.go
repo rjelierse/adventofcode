@@ -21,7 +21,7 @@ func part2(guards GuardMap) int {
 
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day04", func(path string) error {
-		lines := input.ReadAsStrings(path)
+		lines := input.ReadAsStringSlice(path)
 		entries := NewLogEntrySlice(lines)
 		guards := NewGuardMap(entries)
 		fmt.Println("Part 1:", part1(guards))

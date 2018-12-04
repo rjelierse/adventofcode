@@ -10,7 +10,7 @@ import (
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day03", func (path string) error {
 		var sum1, sum2 int
-		for _, line := range input.ReadAsStrings(path) {
+		for _, line := range input.ReadAsStringSlice(path) {
 			numbers := convertLine(line)
 			sum1 = sum1 + Difference(numbers)
 			sum2 = sum2 + Division(numbers)

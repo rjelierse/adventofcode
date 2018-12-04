@@ -9,7 +9,7 @@ import (
 
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day12", func (path string) error {
-		lines := input.ReadAsStrings(path)
+		lines := input.ReadAsStringSlice(path)
 		tree, err := ParseTree(lines)
 		if err != nil {
 			return err

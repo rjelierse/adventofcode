@@ -1,6 +1,6 @@
 package input
 
-func ReadAsStrings(path string) []string {
+func ReadAsStringSlice(path string) []string {
 	data := ReadAsSplitLines(path)
 	var strings []string
 	for _, item := range data {

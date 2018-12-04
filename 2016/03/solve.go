@@ -47,7 +47,7 @@ func isTriangle(a, b, c int) bool {
 
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day03", func(path string) error {
-		lines := input.ReadAsStrings(path)
+		lines := input.ReadAsStringSlice(path)
 		values := parseInput(lines)
 	    fmt.Println("Part 1:", part1(values))
 	    fmt.Println("Part 2:", part2(values))

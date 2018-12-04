@@ -9,7 +9,7 @@ import (
 
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day11", func (path string) error {
-		moves := input.ReadAsStrings(path)
+		moves := input.ReadAsStringSlice(path)
 		var dist, max int
 		g := NewGrid()
 		for _, move := range moves {
