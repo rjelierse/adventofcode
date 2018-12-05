@@ -1,13 +1,12 @@
 package day18
 
 import (
-	"errors"
 	"strconv"
 	"strings"
 	"time"
 )
 
-func program(pid int, instructions []string, out, in chan int) (sent int, err error) {
+func program(pid int, instructions []string, out, in chan int) (sent int) {
 	registers := map[string]int{
 		"p": pid,
 	}
@@ -54,9 +53,6 @@ func program(pid int, instructions []string, out, in chan int) (sent int, err er
 			registers[fields[1]] *= get(fields[2])
 		case "mod":
 			registers[fields[1]] %= get(fields[2])
-		default:
-			err = errors.New("Unknown command:" + fields[0])
-			return
 		}
 		pos++
 	}
@@ -64,7 +60,7 @@ func program(pid int, instructions []string, out, in chan int) (sent int, err er
 	return
 }
 
-func Run(instructions []string) (int, error) {
+func Run(instructions []string) int {
 	c01 := make(chan int, 10000)
 	c10 := make(chan int, 10000)
 	go program(0, instructions, c01, c10)

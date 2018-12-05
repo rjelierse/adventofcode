@@ -9,8 +9,7 @@ import (
 
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day14", func (path string) error {
-		data := input.ReadAsIs(path)
-		grid := NewGrid(string(data))
+		grid := NewGrid(input.ReadAsString(path))
 		fmt.Println("Part 1:", grid.Count())
 		fmt.Println("Part 2:", grid.GroupCount())
 		return nil

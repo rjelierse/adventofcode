@@ -1,33 +1,13 @@
 package day25
 
 import (
-	"context"
-	"flag"
 	"github.com/google/subcommands"
+	"github.com/rjelierse/adventofcode"
 )
 
-type command struct{}
-
-func (c *command) Name() string {
-	return "day25"
-}
-
-func (c *command) Synopsis() string {
-	return ""
-}
-
-func (c *command) Usage() string {
-	return ""
-}
-
-func (c *command) SetFlags(f *flag.FlagSet) {
-	panic("implement me")
-}
-
-func (c *command) Execute(ctx context.Context, f *flag.FlagSet, args ...interface{}) subcommands.ExitStatus {
-	panic("implement me")
-}
-
 func Command() subcommands.Command {
-	return &command{}
+	return adventofcode.NewPuzzle("day25", func (path string) error {
+		// TODO: Implement
+		return nil
+	})
 }

@@ -1,12 +1,11 @@
 package day18
 
 import (
-	"errors"
 	"strconv"
 	"strings"
 )
 
-func Sounds(instructions []string) (lastPlayed int, err error) {
+func Sounds(instructions []string) (lastPlayed int) {
 	registers := make(map[string]int)
 
 	get := func(s string) int {
@@ -43,11 +42,8 @@ func Sounds(instructions []string) (lastPlayed int, err error) {
 			registers[fields[1]] *= get(fields[2])
 		case "mod":
 			registers[fields[1]] %= get(fields[2])
-		default:
-			err = errors.New("Unknown command:" + fields[0])
-			return
 		}
 		pos++
 	}
-	return 0, errors.New("program terminated without recovery")
+	return 0
 }

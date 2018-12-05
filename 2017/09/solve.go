@@ -9,8 +9,7 @@ import (
 
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day09", func (path string) error {
-		data := input.ReadAsIs(path)
-		score, garbage := ReadStream(string(data))
+		score, garbage := ReadStream(input.ReadAsString(path))
 		fmt.Println("Part 1:", score)
 		fmt.Println("Part 2:", garbage)
 		return nil

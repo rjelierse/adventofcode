@@ -23,20 +23,20 @@ func BufferFromInput(input []string) (*Buffer, error) {
 }
 
 // Closest orders the particles slice by distance at time t and returns the particle closest to <0,0,0>
-func (b *Buffer) Closest(t int) *Particle {
-	sort.Slice(b.particles, func(i, j int) bool {
-		return b.particles[i].CalcPosition(t).Sum() < b.particles[j].CalcPosition(t).Sum()
+func (buf *Buffer) Closest(t int) *Particle {
+	sort.Slice(buf.particles, func(i, j int) bool {
+		return buf.particles[i].CalcPosition(t).Sum() < buf.particles[j].CalcPosition(t).Sum()
 	})
 
-	return b.particles[0]
+	return buf.particles[0]
 }
 
-func (b *Buffer) Run(t int) bool {
-	for offset, a := range b.particles {
+func (buf *Buffer) Run(t int) bool {
+	for offset, a := range buf.particles {
 		if a.Collided {
 			continue
 		}
-		for _, b := range b.particles[offset+1:] {
+		for _, b := range buf.particles[offset+1:] {
 			if b.Collided {
 				continue
 			}
@@ -50,8 +50,8 @@ func (b *Buffer) Run(t int) bool {
 	return true
 }
 
-func (b *Buffer) Count(collided bool) (result int) {
-	for _, p := range b.particles {
+func (buf *Buffer) Count(collided bool) (result int) {
+	for _, p := range buf.particles {
 		if p.Collided == collided {
 			result++
 		}

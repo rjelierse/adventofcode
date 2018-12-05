@@ -1,48 +1,13 @@
 package day22
 
 import (
-	"context"
-	"flag"
 	"fmt"
 	"github.com/google/subcommands"
-	"io/ioutil"
-	"os"
+	"github.com/rjelierse/adventofcode"
+	"github.com/rjelierse/adventofcode/input"
 )
 
-type command struct {
-	path string
-}
-
-func (c *command) Name() string {
-	return "day22"
-}
-
-func (c *command) Synopsis() string {
-	return ""
-}
-
-func (c *command) Usage() string {
-	return ""
-}
-
-func (c *command) SetFlags(f *flag.FlagSet) {
-	f.StringVar(&c.path, "input", "", "")
-}
-
-func (c *command) Execute(ctx context.Context, f *flag.FlagSet, args ...interface{}) subcommands.ExitStatus {
-	input, err := ioutil.ReadFile(c.path)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "Cannot parse input:", err)
-		return subcommands.ExitFailure
-	}
-
-	fmt.Println("[part1] Infections:", c.part1(input, 1e4))
-	fmt.Println("[part2] Infections:", c.part2(input, 1e7))
-
-	return subcommands.ExitSuccess
-}
-
-func (c *command) part1(input []byte, rounds int) int {
+func part1(input [][]byte, rounds int) int {
 	m := NewMap(input)
 	v := NewVirus()
 
@@ -63,7 +28,7 @@ func (c *command) part1(input []byte, rounds int) int {
 	return v.Infections
 }
 
-func (c *command) part2(input []byte, rounds int) int {
+func part2(input [][]byte, rounds int) int {
 	m := NewMap(input)
 	v := NewVirus()
 
@@ -90,5 +55,10 @@ func (c *command) part2(input []byte, rounds int) int {
 }
 
 func Command() subcommands.Command {
-	return &command{}
+	return adventofcode.NewPuzzle("day22", func (path string) error {
+		lines := input.ReadAsSplitLines(path)
+		fmt.Println("[part1] Infections:", part1(lines, 1e4))
+		fmt.Println("[part2] Infections:", part2(lines, 1e7))
+		return nil
+	})
 }

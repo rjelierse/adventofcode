@@ -11,8 +11,7 @@ import (
 
 func Command() subcommands.Command {
 	return adventofcode.NewPuzzle("day06", func (path string) error {
-		data := input.ReadAsIs(path)
-		slots := strings.Split(string(data), "\t")
+		slots := strings.Split(input.ReadAsString(path), "\t")
 		config := make([]int, len(slots))
 		for index, slot := range slots {
 			value, err := strconv.Atoi(slot)

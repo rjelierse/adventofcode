@@ -1,7 +1,6 @@
 package day22
 
 import (
-	"bytes"
 	"github.com/rjelierse/adventofcode/grid"
 )
 
@@ -26,11 +25,10 @@ func (m *Map) SetState(p grid.Position, s State) {
 	m.Grid[p] = s
 }
 
-func NewMap(input []byte) *Map {
+func NewMap(lines [][]byte) *Map {
 	m := new(Map)
 	m.Grid = make(map[grid.Position]State)
 
-	lines := bytes.Split(bytes.TrimSpace(input), []byte("\n"))
 	height, width := len(lines), len(lines[0])
 
 	xMin := (width - 1) / -2

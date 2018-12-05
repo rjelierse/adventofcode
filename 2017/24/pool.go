@@ -2,7 +2,6 @@ package day24
 
 import (
 	"container/heap"
-	"strings"
 )
 
 type Pool []*Link
@@ -56,10 +55,10 @@ func (p *Pool) Pop() interface{} {
 	return e
 }
 
-func ParseLinks(input string) (*Pool, error) {
+func ParseLinks(lines []string) (*Pool, error) {
 	p := &Pool{}
 	heap.Init(p)
-	for _, line := range strings.Split(input, "\n") {
+	for _, line := range lines {
 		l, err := NewLink(line)
 		if err != nil {
 			return nil, err
